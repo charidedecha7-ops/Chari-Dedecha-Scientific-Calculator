@@ -1,256 +1,185 @@
-body{background-color: blueviolet;}
-/* CSS Variables for Theme Management */
-:root {
-    --primary-color: #6c63ff;
-    --secondary-color: #4a44b5;
-    --background-color: #f0f2f5;
-    --calculator-bg: rgba(255, 255, 255, 0.8);
-    --text-color: #333;
-    --button-bg: rgba(255, 255, 255, 0.7);
-    --button-hover: rgba(255, 255, 255, 0.9);
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --display-bg: rgba(255, 255, 255, 0.9);
-    --border-radius: 20px;
-    --blur-intensity: blur(10px);
-}
-
-.dark-mode {
-    --primary-color: #8b85ff;
-    --secondary-color: #6c63ff;
-    --background-color: #1a1a2e;
-    --calculator-bg: rgba(30, 30, 46, 0.8);
-    --text-color: #ffffff;
-    --button-bg: rgba(255, 255, 255, 0.1);
-    --button-hover: rgba(255, 255, 255, 0.2);
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --display-bg: rgba(255, 255, 255, 0.1);
-}
-
-/* Base Styles */
+/* ------------------------------
+   GLOBAL STYLES
+--------------------------------*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--background-color);
-    color: var(--text-color);
-    min-height: 100vh;
+    background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+    color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    height: 100vh;
     padding: 20px;
 }
 
-/* Calculator Container */
+/* ------------------------------
+   CALCULATOR CONTAINER
+--------------------------------*/
 .calculator-container {
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
 }
 
-/* Header Styles */
-header {
+/* ------------------------------
+   HEADER
+--------------------------------*/
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    padding: 0 10px;
 }
 
-h1 {
-    font-size: 1.5rem;
+.title {
+    font-size: 20px;
     font-weight: 600;
-    color: var(--primary-color);
 }
 
 .theme-toggle {
-    background: var(--button-bg);
+    background: #222;
     border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #fff;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    backdrop-filter: var(--blur-intensity);
-    box-shadow: 5px 5px 15px var(--shadow-color),
-                -5px -5px 15px rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1);
-    background: var(--button-hover);
+    background: #444;
 }
 
-/* Calculator Styles */
-.calculator {
-    background: var(--calculator-bg);
-    border-radius: var(--border-radius);
-    padding: 25px;
-    backdrop-filter: var(--blur-intensity);
-    box-shadow: 20px 20px 60px var(--shadow-color),
-                -20px -20px 60px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Display Styles */
+/* ------------------------------
+   DISPLAY
+--------------------------------*/
 .display {
-    background: var(--display-bg);
-    border-radius: calc(var(--border-radius) - 5px);
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
-    margin-bottom: 20px;
-    text-align: right;
-    min-height: 100px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    min-height: 90px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    backdrop-filter: var(--blur-intensity);
-    box-shadow: inset 5px 5px 10px var(--shadow-color),
-                inset -5px -5px 10px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: center;
 }
 
 .expression {
-    font-size: 1rem;
-    color: var(--text-color);
+    font-size: 18px;
     opacity: 0.7;
-    min-height: 24px;
-    word-wrap: break-word;
+    min-height: 22px;
 }
 
 .result {
-    font-size: 2rem;
+    font-size: 35px;
     font-weight: 600;
-    color: var(--primary-color);
-    word-wrap: break-word;
 }
 
-/* Keypad Styles */
+/* ------------------------------
+   KEYPAD GRID
+--------------------------------*/
 .keypad {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
 }
 
+/* ------------------------------
+   BUTTONS
+--------------------------------*/
 .btn {
-    border: visible;
-    border-radius: 12px;
-    padding: 15px 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    color: white;
     cursor: pointer;
-    transition: all 0.2s ease;
-    backdrop-filter: var(--blur-intensity);
-    background: var(--button-bg);
-    color: var(--text-color);
-    box-shadow: 5px 5px 15px var(--shadow-color),
-                -5px -5px 15px rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.2s ease;
+    backdrop-filter: blur(10px);
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    background: var(--button-hover);
-    box-shadow: 8px 8px 20px var(--shadow-color),
-                -8px -8px 20px rgba(255, 255, 255, 0.1);
-}
-
-.btn:active {
-    transform: translateY(0);
-    box-shadow: inset 3px 3px 8px var(--shadow-color),
-                inset -3px -3px 8px rgba(255, 255, 255, 0.1);
-}
-
-/* Button Type Styles */
-.number {
-    background: var(--button-bg);
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 .operator {
-    background: rgba(108, 99, 255, 0.2);
-    color: var(--primary-color);
+    background: #ff7b00;
 }
 
-.scientific {
-    background: rgba(74, 68, 181, 0.2);
-    color: var(--secondary-color);
-    font-size: 0.8rem;
+.operator:hover {
+    background: #ff9d3c;
 }
 
 .equals {
-    background: var(--primary-color);
-    color: white;
     grid-column: span 2;
+    background: #00bbff;
+    font-weight: bold;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .keypad {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 10px;
+.equals:hover {
+    background: #33caf7;
+}
+
+.scientific {
+    background: #444;
+}
+
+.scientific:hover {
+    background: #555;
+}
+
+/* ------------------------------
+   DARK MODE TOGGLE
+--------------------------------*/
+body.dark {
+    background: linear-gradient(135deg, #ffffff, #e1e1e1);
+    color: #000;
+}
+
+body.dark .calculator-container {
+    background: rgba(0, 0, 0, 0.06);
+    color: #000;
+}
+
+body.dark .btn {
+    background: rgba(0, 0, 0, 0.08);
+    color: #000;
+}
+
+body.dark .operator {
+    background: #0095ff;
+}
+
+body.dark .equals {
+    background: #00c853;
+}
+
+/* ------------------------------
+   RESPONSIVE DESIGN
+--------------------------------*/
+@media (max-width: 420px) {
+    .title {
+        font-size: 18px;
     }
-    
-    .calculator {
-        padding: 20px;
-    }
-    
-    h1 {
-        font-size: 1.3rem;
-    }
-    
-    .result {
-        font-size: 1.7rem;
-    }
-    
+
     .btn {
-        padding: 12px 6px;
-        font-size: 0.85rem;
+        padding: 14px;
+        font-size: 16px;
     }
-}
 
-@media (max-width: 480px) {
-    .keypad {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .calculator {
-        padding: 15px;
-    }
-    
-    h1 {
-        font-size: 1.1rem;
-    }
-    
     .result {
-        font-size: 1.5rem;
+        font-size: 30px;
     }
-    
-    .btn {
-        padding: 10px 4px;
-        font-size: 0.8rem;
-    }
-    
-    header {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-}
-
-/* Animation for button presses */
-@keyframes buttonPress {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.95); }
-    100% { transform: scale(1); }
-}
-
-.btn.pressed {
-    animation: buttonPress 0.1s ease;
 }
